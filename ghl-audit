@@ -1,0 +1,583 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoHighLevel Audit Report - Renford PT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @media print {
+            body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #e5e5e5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 40px;
+            border-bottom: 1px solid #e5e5e5;
+            position: relative;
+        }
+
+        .gradient-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2F4F4F 0%, #708090 50%, #CD853F 100%);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #2F4F4F 0%, #708090 50%, #CD853F 100%);
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2F4F4F;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #2F4F4F;
+            margin: 20px 0 10px 0;
+        }
+
+        .subtitle {
+            color: #708090;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #2F4F4F;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid #2F4F4F;
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 25px 0 15px 0;
+        }
+
+        .finding-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #CD853F;
+        }
+
+        .finding-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .finding-text {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-box {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            border-left: 3px solid #4caf50;
+        }
+
+        .recommendation-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2e7d32;
+            margin-bottom: 8px;
+        }
+
+        ul {
+            margin-left: 20px;
+            color: #666;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        th {
+            background: #2F4F4F;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-good {
+            color: #4caf50;
+            font-weight: 600;
+        }
+
+        .status-warning {
+            color: #ff9800;
+            font-weight: 600;
+        }
+
+        .status-critical {
+            color: #f44336;
+            font-weight: 600;
+        }
+
+        .summary-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .summary-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #856404;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="gradient-bar"></div>
+            <div class="logo-section">
+                <div class="logo-icon"></div>
+                <div class="logo-text">PIVOTPLANIT</div>
+            </div>
+            <h1>GoHighLevel Audit Report</h1>
+            <p class="subtitle">Renford Personal Training | October 2025</p>
+        </div>
+
+        <div class="content">
+            <div class="summary-box">
+                <div class="summary-title">Executive Summary</div>
+                <p style="color: #666; margin-bottom: 15px;">Your GoHighLevel account is approximately <strong style="color: #856404;">70% optimized</strong>. The core CRM structure is in place and 10 active workflows are functional, but there are critical gaps in lead tracking, analytics integration, and workflow organization that are preventing you from maximizing conversions and measuring ROI.</p>
+                <p style="color: #666;"><strong>Priority fixes:</strong> Connect analytics tracking, link forms to pipelines, clean up inactive workflows, and implement automated lead capture.</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">4. Landing Pages & Funnels</div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Funnel Analytics</div>
+                    <p class="finding-text"><strong class="status-critical">● CRITICAL:</strong> Funnel analytics are inactive.</p>
+                    <p class="finding-text"><strong>Impact:</strong> No insight into visitor behavior, drop-off points, or conversion rates. Cannot optimize for better performance.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATION:</div>
+                        <ul>
+                            <li>Connect all live funnel pages within GHL</li>
+                            <li>Enable tracking codes: Google Tag Manager, Meta Pixel, Google Analytics 4</li>
+                            <li>Set up conversion events for form submissions and booking completions</li>
+                            <li>Monitor funnel drop-off rates weekly</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Page Optimization</div>
+                    <p class="finding-text"><strong class="status-warning">● WARNING:</strong> Funnel load speed and CTA clarity have not been evaluated.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATION:</div>
+                        <ul>
+                            <li>Conduct speed audit and optimize images, scripts, and hosting</li>
+                            <li>Ensure each landing page has ONE clear CTA</li>
+                            <li>Maintain offer consistency across all touchpoints</li>
+                            <li>A/B test headlines and CTAs once traffic increases</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">5. Tracking & Integrations</div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Analytics and Pixel Tracking</div>
+                    <p class="finding-text"><strong class="status-critical">● CRITICAL:</strong> Google Analytics and Meta Pixel are not connected.</p>
+                    <p class="finding-text"><strong>Impact:</strong> Campaign and conversion tracking are incomplete. Cannot measure ROI or optimize ad spend.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATION:</div>
+                        <ul>
+                            <li>Integrate GA4 through GHL or Google Tag Manager</li>
+                            <li>Install Meta Pixel for Facebook/Instagram tracking</li>
+                            <li>Set up conversion goals: form submissions, consultation bookings, program purchases</li>
+                            <li>Create custom events for key user actions</li>
+                            <li>Recommended goals: Page View, Form Start, Form Submit, Booking Complete, Purchase</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Lead Source Reporting</div>
+                    <p class="finding-text"><strong class="status-critical">● CRITICAL:</strong> Lead source tracking is missing.</p>
+                    <p class="finding-text"><strong>Impact:</strong> Cannot determine which marketing channels are driving leads and revenue.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATION:</div>
+                        <ul>
+                            <li>Enable source tracking under Lead Settings in GHL</li>
+                            <li>Use UTM parameters on all social media links and ads</li>
+                            <li>Tag all form submissions with source information</li>
+                            <li>Create dashboard showing leads by source (GMB, Instagram, Facebook, TikTok, Direct)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Current Connected Source</div>
+                    <p class="finding-text"><strong class="status-good">✓ WORKING:</strong> Google Business Profile is the only connected source showing activity.</p>
+                    <p class="finding-text"><strong>Insight:</strong> Local SEO data and reviews are being tracked properly. This is a positive foundation.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ NEXT STEP:</div>
+                        <ul>
+                            <li>Add call tracking to capture phone inquiries</li>
+                            <li>Integrate Google Maps message leads directly into GHL</li>
+                            <li>Optimize GMB posting schedule (2x weekly minimum)</li>
+                            <li>Monitor GMB insights for local search performance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Project Scope: What's Included vs. Future Optimization</div>
+
+                <div class="insight-box">
+                    <div class="insight-title">✓ Included in Your Current Project (Weeks 1-4)</div>
+                    <p style="color: #2e7d32; margin-bottom: 15px;">These items will be implemented as part of your 4-week intensive project:</p>
+                    <ul style="color: #2e7d32;">
+                        <li><strong>Pipeline Optimization:</strong> All forms linked to pipelines, proper lead stages, opportunity tracking</li>
+                        <li><strong>Workflow Cleanup:</strong> Deactivate unused workflows, standardize naming, fix delay timings</li>
+                        <li><strong>Email Automation:</strong> Welcome sequence (3 emails), nurture series, reactivation sequence</li>
+                        <li><strong>Landing Page Optimization:</strong> Speed optimization, CTA clarity, mobile responsiveness</li>
+                        <li><strong>GMB Optimization:</strong> Profile optimization, posting schedule, review strategy (added after discovering your existing activity)</li>
+                        <li><strong>Basic Lead Source Tracking:</strong> Tag leads by source (GMB, Instagram, Facebook, TikTok)</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-title">→ Recommended for Future Optimization (3-6 Months Post-Launch)</div>
+                    <p style="color: #856404; margin-bottom: 15px;">These are valuable optimizations to implement after your January launch once you have traffic and data:</p>
+                    <ul style="color: #856404;">
+                        <li><strong>Google Analytics 4 Integration:</strong> Advanced conversion tracking and user behavior analysis</li>
+                        <li><strong>Meta Pixel for Ad Tracking:</strong> Essential when you're ready to run Facebook/Instagram ads</li>
+                        <li><strong>UTM Parameter Strategy:</strong> Detailed campaign-level tracking across all marketing channels</li>
+                        <li><strong>Call Tracking Integration:</strong> Track phone inquiries from GMB and landing pages</li>
+                        <li><strong>Advanced Segmentation:</strong> Behavior-based email sequences and retargeting</li>
+                    </ul>
+                    <p style="color: #856404; margin-top: 15px; font-weight: 600;">Why wait? These tools are most valuable when you have consistent traffic (100+ visitors/month). Implementing them now would be premature optimization. We'll revisit these 3-6 months post-launch.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Priority Action Plan</div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Priority</th>
+                            <th>Action Item</th>
+                            <th>Impact</th>
+                            <th>Timeline</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="status-critical">HIGH</span></td>
+                            <td>Link all forms to pipelines with automation</td>
+                            <td>Capture and nurture every lead</td>
+                            <td>Week 2</td>
+                            <td><strong style="color: #2F4F4F;">In Progress</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-critical">HIGH</span></td>
+                            <td>Set up welcome email sequence (3 emails)</td>
+                            <td>Immediate engagement with new leads</td>
+                            <td>Week 2</td>
+                            <td><strong style="color: #2F4F4F;">Upcoming</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-critical">HIGH</span></td>
+                            <td>Nurture email series (weekly fitness/nutrition tips)</td>
+                            <td>Keep leads warm until ready to buy</td>
+                            <td>Week 2-3</td>
+                            <td><strong style="color: #2F4F4F;">Upcoming</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-critical">HIGH</span></td>
+                            <td>Landing page CTA and conversion optimization</td>
+                            <td>Improved conversion rates</td>
+                            <td>Week 2</td>
+                            <td><strong style="color: #2F4F4F;">In Progress</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-warning">MEDIUM</span></td>
+                            <td>Remove inactive workflows (43 drafts)</td>
+                            <td>Improved system clarity</td>
+                            <td>Week 2-3</td>
+                            <td><strong style="color: #2F4F4F;">Upcoming</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-warning">MEDIUM</span></td>
+                            <td>Basic lead source tracking (tag by channel)</td>
+                            <td>Know which platforms drive leads</td>
+                            <td>Week 2-3</td>
+                            <td><strong style="color: #2F4F4F;">Upcoming</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-warning">MEDIUM</span></td>
+                            <td>Add opportunity values to lead forms</td>
+                            <td>Revenue forecasting capability</td>
+                            <td>Week 3</td>
+                            <td><strong style="color: #2F4F4F;">Upcoming</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-warning">MEDIUM</span></td>
+                            <td>GMB profile optimization + posting schedule</td>
+                            <td>Local search visibility</td>
+                            <td>Week 2</td>
+                            <td><strong style="color: #2F4F4F;">Upcoming</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-warning">MEDIUM</span></td>
+                            <td>Standardize workflow naming conventions</td>
+                            <td>Easier long-term maintenance</td>
+                            <td>Week 3-4</td>
+                            <td><strong style="color: #2F4F4F;">Upcoming</strong></td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><span style="background: #ffc107; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">FUTURE</span></td>
+                            <td>Email deliverability verification (SPF, DKIM, DMARC)</td>
+                            <td>Ensure emails reach inbox not spam</td>
+                            <td>Post-Launch</td>
+                            <td><strong style="color: #856404;">Future</strong></td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><span style="background: #ffc107; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">FUTURE</span></td>
+                            <td>Google Analytics 4 integration</td>
+                            <td>Advanced conversion tracking & behavior analysis</td>
+                            <td>Post-Launch</td>
+                            <td><strong style="color: #856404;">Future</strong></td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><span style="background: #ffc107; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">FUTURE</span></td>
+                            <td>Meta Pixel installation</td>
+                            <td>Track conversions from Facebook/Instagram ads</td>
+                            <td>Post-Launch</td>
+                            <td><strong style="color: #856404;">Future</strong></td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><span style="background: #ffc107; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">FUTURE</span></td>
+                            <td>UTM parameter strategy</td>
+                            <td>Campaign-level performance tracking</td>
+                            <td>Post-Launch</td>
+                            <td><strong style="color: #856404;">Future</strong></td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><span style="background: #ffc107; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">FUTURE</span></td>
+                            <td>Call tracking integration</td>
+                            <td>Attribution for phone inquiries from GMB</td>
+                            <td>Post-Launch</td>
+                            <td><strong style="color: #856404;">Future</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="color: #666; font-size: 13px; margin-top: 15px;"><strong>Note:</strong> Items marked "In Progress" or "Upcoming" will be completed during your 4-week project (Oct 13 - Nov 7). Items marked "Future" are recommended optimizations to implement 3-6 months after your January launch when you have traffic and conversion data to analyze.</p>
+            </div>
+
+            <div class="summary-box" style="background: #e8f5e9; border-color: #4caf50;">
+                <div class="summary-title" style="color: #2e7d32;">Conclusion</div>
+                <p style="color: #2e7d32; margin-bottom: 15px;">Your GHL account has 10 workflows currently active. The critical gaps identified in this audit will be addressed during your 4-week project (Oct 13 - Nov 7).</p>
+                <p style="color: #2e7d32; margin-bottom: 15px;"><strong>By November 7, you'll have:</strong></p>
+                <ul style="color: #2e7d32;">
+                    <li>Every lead automatically captured and nurtured</li>
+                    <li>Clear pipeline visibility showing lead progression</li>
+                    <li>Optimized landing pages converting visitors to consultations</li>
+                    <li>Basic tracking to identify which channels drive leads</li>
+                    <li>Clean, organized workflows that are easy to maintain</li>
+                    <li>Optimized GMB profile generating local leads</li>
+                </ul>
+                <p style="color: #2e7d32; margin-top: 15px;"><strong>Advanced tracking tools (GA4, Meta Pixel, UTMs) will be most valuable after your January launch when you have consistent traffic and conversion data to analyze.</strong> We can revisit those optimizations 3-6 months post-launch as a separate engagement.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #e5e5e5;">
+                <p style="color: #2F4F4F; font-weight: 600; font-size: 18px;">PIVOTPLANIT</p>
+                <p style="color: #708090; font-size: 13px; font-style: italic;">Operational infrastructure that actually works.</p>
+                <p style="color: #999; font-size: 12px; margin-top: 10px;">Report Date: October 18, 2025</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html><div class="section">
+                <div class="section-title">1. CRM Setup</div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Opportunity Status</div>
+                    <p class="finding-text"><strong class="status-critical">● CRITICAL:</strong> No data is reflected under "Opportunity Status" because leads are not being automatically added to any pipeline.</p>
+                    <p class="finding-text"><strong>Impact:</strong> You cannot track lead progression (in progress, won, lost), making it impossible to measure sales performance or conversion rates.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATION:</div>
+                        <ul>
+                            <li>Link all lead capture forms to defined pipelines</li>
+                            <li>Set automation to create an opportunity for every new lead</li>
+                            <li>Define clear pipeline stages: New Lead → Contacted → Consultation Booked → Active Client → Won/Lost</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Opportunity Value</div>
+                    <p class="finding-text"><strong class="status-critical">● CRITICAL:</strong> Opportunity values are missing throughout the system.</p>
+                    <p class="finding-text"><strong>Impact:</strong> Revenue forecasting and ROI measurement are not possible. You can't see pipeline value or predict monthly revenue.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATION:</div>
+                        <ul>
+                            <li>Add "Opportunity Value" field to lead forms and workflows</li>
+                            <li>Set default values based on package type (£167 for 6-week, £197 for 12-week)</li>
+                            <li>Use this data for pipeline value tracking and revenue projections</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Lead Stages and Tagging</div>
+                    <p class="finding-text"><strong class="status-warning">● WARNING:</strong> No consistent lead stage mapping or standardized tagging system.</p>
+                    <p class="finding-text"><strong>Impact:</strong> Difficult to segment leads for targeted campaigns or personalize workflow automation.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATION:</div>
+                        <ul>
+                            <li>Document existing tags for historical reference</li>
+                            <li>Implement consistent lead tagging: Source (GMB, Instagram, Facebook), Campaign Type, Interest Level</li>
+                            <li>Define clear lead stage progression with automation triggers at each stage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">2. Automation Systems</div>
+
+                <p style="color: #666; margin-bottom: 20px;"><strong>Summary:</strong> 53 workflows reviewed. 10 are active and functional (mainly in 'Beta' category). 43 workflows are in draft mode or unused (test/duplicate versions).</p>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Workflow Organization</div>
+                    <p class="finding-text"><strong class="status-warning">● WARNING:</strong> Active workflows show inconsistency in delay logic, tagging, and follow-up sequences.</p>
+                    <p class="finding-text"><strong>Impact:</strong> Reduced automation efficiency and difficulty maintaining the system long-term.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATIONS:</div>
+                        <ol style="margin-left: 20px; color: #2e7d32;">
+                            <li>Standardize naming conventions (e.g., 'IG - Toolkit Lead')</li>
+                            <li>Ensure every workflow with form trigger includes at least one follow-up email and tag</li>
+                            <li>Deactivate or delete unused draft workflows to maintain clarity</li>
+                            <li>Create visual map of active automation flows (Lead Capture → Nurture → Booking → Review)</li>
+                            <li>Review delay timings - use consistent 1-minute delay between DM and email</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <p style="color: #2e7d32; font-weight: 600; margin-top: 20px;">📈 Estimated Impact: Addressing these gaps will enhance user engagement, reporting accuracy, and campaign scalability by 40-50%.</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">3. Email & SMS Systems</div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Deliverability & Templates</div>
+                    <p class="finding-text"><strong class="status-critical">● CRITICAL:</strong> No email/SMS campaign data or deliverability reports found.</p>
+                    <p class="finding-text"><strong>Impact:</strong> Unclear if messages are being delivered, opened, or triggering spam filters.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATION:</div>
+                        <ul>
+                            <li>Test email deliverability immediately</li>
+                            <li>Verify domain authentication (SPF, DKIM, DMARC records)</li>
+                            <li>Review and optimize templates for mobile readability</li>
+                            <li>Ensure clear CTAs in every email</li>
+                            <li>Set up SMS only after confirming budget/requirements</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="finding-box">
+                    <div class="finding-label">Issue: Automation Flows</div>
+                    <p class="finding-text"><strong class="status-warning">● WARNING:</strong> Limited or no automation in email/SMS sequences.</p>
+                    <div class="recommendation-box">
+                        <div class="recommendation-label">✓ RECOMMENDATION:</div>
+                        <ul>
+                            <li>Implement welcome sequence (3 emails): intro, social proof, booking CTA</li>
+                            <li>Create nurture series (weekly): fitness tips, meal prep ideas, motivation</li>
+                            <li>Set up reactivation sequence for leads that didn't book within 14 days</li>
+                            <li>Add follow-up sequences for no-shows and inactive clients</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            
