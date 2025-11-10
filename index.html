@@ -810,33 +810,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renford Bennett Personal Training | Fitness for Busy Mums</title>
+    <title>Renford Bennett PT | Busy Mums Reset 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Brand Colors */
             --primary: #7D9D95; /* Sage green from logo */
             --primary-dark: #5A7A72;
             --primary-light: #9CB5AF;
             --primary-gradient: linear-gradient(135deg, #7D9D95 0%, #5A7A72 100%);
-            --accent: #CD853F; /* Peru - secondary accent */
-            --accent-dark: #B26B28;
-            --accent-gradient: linear-gradient(135deg, #CD853F 0%, #B26B28 100%);
-            --secondary: #708090; /* Slate grey from old site */
-            --secondary-dark: #2F4F4F; /* Dark slate from old site */
-            --secondary-gradient: linear-gradient(135deg, #708090 0%, #2F4F4F 100%);
+            
+            --accent: #F8A978; /* Orange from brand kit */
+            --accent-dark: #F5966B;
+            --accent-light: #FBE0C4;
+            --accent-gradient: linear-gradient(90deg, #F8A978 0%, #F5966B 50%, #F08B8B 100%);
+            
+            --secondary: #F5966B; /* Coral from brand kit */
+            --secondary-dark: #F08B8B; /* Pink from brand kit */
+            --secondary-gradient: linear-gradient(90deg, #F5966B 0%, #F08B8B 100%);
+            
+            /* Light Mode */
             --text-dark: #1a1a1a;
             --text-light: #666666;
             --background-light: #f9f9f9;
-            --background-gradient: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
-            --white: #ffffff;
-            --white-gradient: linear-gradient(135deg, #ffffff 0%, #f6f6f6 100%);
+            --background: #ffffff;
             --border-color: #e1e1e1;
+            
+            /* Dark Mode */
+            --dark-bg: #161820;
+            --dark-surface: #1E1F29;
+            --dark-text: #FFFFFF;
+            --dark-text-secondary: #B4B6C1;
+            --dark-border: #2D2E3F;
+            
+            /* Shadows and UI */
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
             --shadow: 0 6px 24px rgba(0,0,0,0.12);
             --shadow-lg: 0 12px 36px rgba(0,0,0,0.18);
             --shadow-inset: inset 0 2px 8px rgba(0,0,0,0.08);
             --border-radius: 8px;
             --btn-radius: 4px;
+        }
+        
+        .dark-mode {
+            --text-dark: var(--dark-text);
+            --text-light: var(--dark-text-secondary);
+            --background-light: var(--dark-surface);
+            --background: var(--dark-bg);
+            --border-color: var(--dark-border);
         }
         
         * {
@@ -849,528 +870,158 @@
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
-            background-color: var(--white);
+            background-color: var(--background);
             overflow-x: hidden;
             position: relative;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--primary-gradient);
-            z-index: 1001;
+            transition: all 0.3s ease;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        /* Text styles and decorations */
-        .badge-text {
-            display: inline-block;
-            background: var(--primary-gradient);
-            color: white;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(90, 122, 114, 0.2);
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 40px;
+            height: 40px;
+            background: var(--background-light);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
         }
         
-        .highlight-text {
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .theme-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--text-dark);
+        }
+        
+        /* Logo */
+        .logo {
+            display: block;
+            width: 200px;
+            margin: 40px auto 30px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+        
+        .headline {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .subheadline {
+            font-size: 20px;
+            line-height: 1.5;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .highlight {
             position: relative;
             display: inline-block;
         }
         
-        .highlight-text::after {
+        .highlight::after {
             content: '';
             position: absolute;
-            bottom: 4px;
+            bottom: 0;
             left: 0;
             width: 100%;
             height: 8px;
             background-color: rgba(125, 157, 149, 0.3);
             z-index: -1;
-            border-radius: 4px;
         }
         
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(125, 157, 149, 0.2);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 20px;
-        }
-        
-        .logo {
-            height: 36px;
-        }
-        
-        .logo img {
-            height: 100%;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .main-content {
-            margin-top: 80px; /* Space for fixed header */
-        }
-        
-        .hero {
-            background: var(--white-gradient);
-            padding: 120px 0 100px;
-            position: relative;
-            box-shadow: var(--shadow-inset);
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1.5" fill="%237D9D95" opacity="0.3"/></svg>');
-            background-size: 50px 50px;
-            opacity: 0.5;
-            z-index: 0;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: var(--primary-gradient);
-            opacity: 0.7;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            color: var(--text-dark);
-        }
-        
-        .hero p {
-            font-size: 20px;
-            color: var(--text-light);
-            margin-bottom: 30px;
-            font-weight: 400;
-        }
-        
+        /* CTA Buttons */
         .cta-button {
             display: inline-block;
-            background: var(--primary-gradient);
-            color: white;
-            font-weight: 600;
             padding: 16px 32px;
-            border-radius: var(--btn-radius);
             font-size: 18px;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            color: white;
+            background: var(--secondary-gradient);
             border: none;
+            border-radius: var(--btn-radius);
+            text-decoration: none;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(90, 122, 114, 0.25);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
-            opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 150, 107, 0.4);
+            margin-top: 20px;
+            text-align: center;
         }
         
         .cta-button:hover {
-            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(90, 122, 114, 0.4);
+            box-shadow: 0 6px 20px rgba(245, 150, 107, 0.5);
         }
         
-        .cta-button:hover::before {
-            opacity: 1;
+        .cta-button.primary {
+            background: var(--secondary-gradient);
+            min-width: 250px;
         }
         
-        .section {
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        .section:nth-child(odd) {
-            background-color: var(--white);
-        }
-        
-        .section:nth-child(even) {
-            background-color: var(--background-light);
-            box-shadow: var(--shadow-inset);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: var(--text-dark);
-            display: inline-block;
-            position: relative;
-        }
-        
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
-        }
-        
-        .section-header p {
-            font-size: 18px;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 20px auto 0;
-        }
-        
-        .timeline-wrapper {
-            background: var(--background-gradient);
-            padding: 70px 0;
-            position: relative;
-            overflow: hidden;
-            border-top: 1px solid rgba(125, 157, 149, 0.1);
-            border-bottom: 1px solid rgba(125, 157, 149, 0.1);
-        }
-        
-        .timeline-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="%237D9D95" opacity="0.07"/></svg>');
-            background-size: 30px 30px;
-            opacity: 0.5;
-        }
-        
-        .journey-timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            z-index: 1;
-        }
-        
-        .timeline-track {
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
-            position: absolute;
-            top: 25px;
-            left: 50px;
-            right: 50px;
-            z-index: 1;
-            border-radius: 3px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        
-        .timeline-steps {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .timeline-step {
-            text-align: center;
-            flex: 1;
-            padding: 0 15px;
-            transition: transform 0.3s;
-        }
-        
-        .timeline-step:hover {
-            transform: translateY(-5px);
-        }
-        
-        .step-circle {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-weight: 700;
-            font-size: 20px;
-            box-shadow: 0 6px 15px rgba(90, 122, 114, 0.25);
-            position: relative;
-            transition: all 0.3s;
-        }
-        
-        .step-circle::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 50%;
-            box-shadow: inset 0 2px 6px rgba(255,255,255,0.2), 
-                        inset 0 -2px 6px rgba(0,0,0,0.1);
-        }
-        
-        .timeline-step:hover .step-circle {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(90, 122, 114, 0.35);
-        }
-        
-        .step-title {
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 18px;
-            color: var(--text-dark);
-            transition: color 0.3s;
-        }
-        
-        .timeline-step:hover .step-title {
-            color: var(--primary-dark);
-        }
-        
-        .step-description {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-        
-        .programs-container {
-            margin-top: 60px;
-        }
-        
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .program-card {
-            background: var(--white-gradient);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .program-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .program-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(125, 157, 149, 0.3);
-        }
-        
-        .program-card:hover::before {
-            opacity: 1;
-        }
-        
-        .program-title {
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-        }
-        
-        .program-description {
-            color: var(--text-light);
-            margin-bottom: 20px;
-            font-size: 16px;
-            flex-grow: 1;
-        }
-        
-        .program-price {
-            font-size: 36px;
-            font-weight: 800;
-            margin: 20px 0;
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
             color: var(--primary);
-            position: relative;
-            display: inline-block;
+            box-shadow: none;
+            margin-top: 15px;
         }
         
-        .program-price::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: -30px;
-            width: 20px;
-            height: 2px;
-            background: var(--primary-gradient);
-            transform: translateY(-50%);
+        .cta-button.secondary:hover {
+            background: rgba(125, 157, 149, 0.1);
         }
         
-        .price-note {
-            font-size: 16px;
-            font-weight: 400;
-            color: var(--text-light);
-        }
-        
-        .program-features {
-            margin: 20px 0;
-            list-style: none;
-        }
-        
-        .program-features li {
-            margin-bottom: 12px;
-            padding-left: 30px;
-            position: relative;
-        }
-        
-        .program-features li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-        
-        .program-card .cta-button {
-            width: 100%;
-            text-align: center;
-            margin-top: 20px;
-        }
-        
+        /* Video Section */
         .video-container {
-            max-width: 800px;
-            margin: 50px auto;
-            border-radius: var(--border-radius);
+            margin: 40px auto;
+            max-width: 600px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow);
             position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .video-container:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         
         .video-placeholder {
-            background: var(--primary-gradient);
-            height: 450px;
+            background: linear-gradient(rgba(125, 157, 149, 0.2), rgba(125, 157, 149, 0.1));
+            height: 340px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--text-light);
+            font-weight: 600;
             font-size: 18px;
-            font-weight: 500;
             position: relative;
-            overflow: hidden;
         }
         
-        .video-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.2) 100%);
-            z-index: 1;
-        }
-        
-        .video-placeholder::after {
-            content: '▶';
+        .play-button {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -1383,117 +1034,181 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
-            z-index: 2;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
-        .video-placeholder:hover::after {
-            background: rgba(255, 255, 255, 0.3);
+        .play-button:hover {
             transform: translate(-50%, -50%) scale(1.1);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
         }
         
-        .coach-section {
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 15px 0 15px 25px;
+            border-color: transparent transparent transparent white;
+            margin-left: 5px;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin: 60px 0;
+            padding: 40px 20px;
+            border-radius: 16px;
+            background-color: var(--background-light);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .section-desc {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Program Cards */
+        .programs-container {
+            margin-top: 30px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            max-width: 1100px;
-            margin: 0 auto;
-            align-items: center;
+            gap: 25px;
         }
         
-        .coach-image {
-            border-radius: var(--border-radius);
+        .program-card {
+            background-color: var(--background);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
             position: relative;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+        
+        .program-header {
+            background: var(--secondary-gradient);
+            padding: 15px 20px;
+            color: white;
+        }
+        
+        .program-title {
+            font-weight: 700;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .program-subtitle {
+            font-weight: 400;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .program-content {
+            padding: 20px;
+        }
+        
+        .program-price {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .program-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .program-features li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .program-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Feature Cards */
+        .feature-card {
+            text-align: center;
+            padding: 25px 15px;
+            border-radius: 12px;
+            background-color: var(--background);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
         
-        .coach-image:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-light);
         }
         
-        .coach-image img {
-            width: 100%;
-            display: block;
-        }
-        
-        .coach-placeholder {
-            background: var(--primary-gradient);
-            height: 400px;
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(125, 157, 149, 0.2), rgba(125, 157, 149, 0.1));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            margin: 0 auto 15px;
+        }
+        
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--primary);
+        }
+        
+        .feature-title {
+            font-weight: 700;
             font-size: 18px;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .coach-placeholder::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.1));
-        }
-        
-        .coach-content h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             color: var(--text-dark);
-            position: relative;
-            display: inline-block;
         }
         
-        .coach-content h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
-        }
-        
-        .coach-content p {
-            margin-bottom: 20px;
+        .feature-desc {
+            font-size: 14px;
             color: var(--text-light);
-            font-size: 16px;
-            line-height: 1.8;
         }
         
-        .testimonials-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
+        /* Testimonials Section */
         .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
         
         .testimonial-card {
-            background: var(--white-gradient);
+            background-color: var(--background);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
             border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 35px 30px;
-            transition: all 0.3s ease;
-            position: relative;
             box-shadow: var(--shadow-sm);
-            overflow: hidden;
+            position: relative;
         }
         
         .testimonial-card::before {
@@ -1501,1063 +1216,496 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            font-size: 120px;
+            font-size: 60px;
+            opacity: 0.1;
             font-family: Georgia, serif;
-            color: rgba(125, 157, 149, 0.07);
-            line-height: 1;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: var(--shadow);
-            border-color: rgba(125, 157, 149, 0.3);
+            color: var(--primary);
         }
         
         .testimonial-text {
             font-style: italic;
-            margin-bottom: 25px;
-            color: var(--text-dark);
-            font-size: 16px;
-            line-height: 1.8;
+            margin-bottom: 15px;
+            padding-left: 20px;
             position: relative;
             z-index: 1;
         }
         
         .testimonial-author {
             font-weight: 700;
-            font-size: 18px;
             color: var(--text-dark);
-            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author span {
+            color: var(--text-light);
+            font-weight: 400;
+            font-size: 0.9em;
+            margin-left: 5px;
+        }
+        
+        /* Guarantee Section */
+        .guarantees {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .guarantee-card {
+            background-color: var(--background);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
             position: relative;
         }
         
-        .testimonial-author::before {
+        .guarantee-badge {
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: var(--secondary-gradient);
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .guarantee-title {
+            font-weight: 700;
+            font-size: 20px;
+            margin: 15px 0 10px;
+            color: var(--text-dark);
+        }
+        
+        .guarantee-desc {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        /* Process Section */
+        .process-steps {
+            margin-top: 30px;
+            counter-reset: step-counter;
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 25px;
+            min-height: 50px;
+        }
+        
+        .process-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .process-step:not(:last-child)::after {
             content: '';
             position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 30px;
-            height: 3px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
+            top: 40px;
+            left: 20px;
+            width: 1px;
+            height: calc(100% - 20px);
+            background-color: var(--primary-light);
         }
         
-        .testimonial-details {
-            font-size: 14px;
+        .process-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+        
+        .process-desc {
             color: var(--text-light);
-            margin-top: 15px;
+            font-size: 14px;
         }
         
+        /* FAQ Section */
         .faq-container {
-            max-width: 800px;
-            margin: 40px auto 0;
+            margin-top: 30px;
         }
         
         .faq-item {
             border-bottom: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            background-color: rgba(125, 157, 149, 0.03);
+            margin-bottom: 15px;
         }
         
         .faq-question {
+            padding: 15px 0;
+            font-weight: 700;
             font-size: 18px;
-            font-weight: 600;
-            padding: 20px 0;
             cursor: pointer;
-            position: relative;
-            padding-right: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             color: var(--text-dark);
-            transition: color 0.3s;
         }
         
-        .faq-item:hover .faq-question {
-            color: var(--primary-dark);
-        }
-        
-        .faq-question:after {
+        .faq-question::after {
             content: '+';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
+            font-size: 20px;
             color: var(--primary);
-            width: 24px;
-            height: 24px;
-            text-align: center;
-            line-height: 22px;
-            transition: all 0.3s ease;
         }
         
-        .faq-item.active .faq-question:after {
+        .faq-item.active .faq-question::after {
             content: '−';
-            transform: translateY(-50%) rotate(0deg);
         }
         
         .faq-answer {
-            padding: 0 0 25px;
-            display: none;
+            padding: 0 0 15px;
             color: var(--text-light);
-            font-size: 16px;
-            line-height: 1.8;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            display: none;
         }
         
         .faq-item.active .faq-answer {
             display: block;
         }
         
-        .final-cta {
-            background: linear-gradient(135deg, rgba(125, 157, 149, 0.15), rgba(90, 122, 114, 0.25));
+        /* Footer */
+        .footer {
             text-align: center;
-            padding: 90px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .final-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: var(--primary-gradient);
-        }
-        
-        .final-cta::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: var(--primary-gradient);
-        }
-        
-        .final-cta h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
-        }
-        
-        .final-cta p {
-            font-size: 18px;
+            padding: 40px 0;
             color: var(--text-light);
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .final-cta .cta-button {
-            padding: 18px 48px;
-            font-size: 20px;
-            box-shadow: 0 8px 24px rgba(90, 122, 114, 0.3);
-        }
-        
-        .final-cta .cta-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(90, 122, 114, 0.4);
-        }
-        
-        footer {
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            color: #fff;
-            padding: 60px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--primary-gradient);
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .footer-logo {
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo img {
-            height: 40px;
-            filter: brightness(0) invert(1);
-            transition: all 0.3s ease;
-        }
-        
-        .footer-logo:hover img {
-            transform: scale(1.05);
-            filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,0.3));
-        }
-        
-        .footer-about p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 20px;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-        
-        .footer-heading {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #fff;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .footer-heading::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 30px;
-            height: 3px;
-            background: var(--primary-gradient);
-            border-radius: 1.5px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 14px;
-            position: relative;
-            padding-left: 5px;
-        }
-        
-        .footer-links a::before {
-            content: '';
-            position: absolute;
-            left: -5px;
-            top: 50%;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 4px 0 4px 4px;
-            border-color: transparent transparent transparent rgba(125, 157, 149, 0);
-            transform: translateY(-50%);
-            transition: all 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: #fff;
-            padding-left: 10px;
-        }
-        
-        .footer-links a:hover::before {
-            left: 0;
-            border-color: transparent transparent transparent rgba(125, 157, 149, 1);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        
-        .social-icon:hover {
-            background: var(--primary-gradient);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            color: rgba(255,255,255,0.5);
             font-size: 14px;
         }
         
-        /* Decorative elements */
-        .divider {
-            height: 1px;
-            width: 100%;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            margin: 40px 0;
-            opacity: 0.3;
-        }
-        
-        .arrow-down {
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 30px auto 0;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .arrow-down svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--primary);
-            transition: all 0.3s;
-        }
-        
-        .arrow-down:hover {
-            transform: translateY(5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .arrow-down:hover svg {
-            transform: scale(1.2);
-        }
-        
-        .ribbon {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--accent-gradient);
-            color: white;
-            padding: 5px 40px;
-            transform: rotate(45deg);
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            z-index: 1;
-        }
-        
-        /* Media queries */
-        @media (max-width: 992px) {
-            .coach-section,
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .footer-container {
-                text-align: center;
-            }
-            
-            .social-links {
-                justify-content: center;
-            }
-            
-            .hero h1 {
-                font-size: 38px;
-            }
-            
-            .footer-heading::after,
-            .testimonial-author::before,
-            .coach-content h2::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-        
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .hero {
-                padding: 80px 0 60px;
+            .headline {
+                font-size: 36px;
             }
             
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .hero p {
+            .subheadline {
                 font-size: 18px;
             }
             
-            .section {
-                padding: 60px 0;
-            }
-            
-            .section-header h2 {
-                font-size: 30px;
-            }
-            
-            .program-card {
-                padding: 30px 25px;
-            }
-            
-            .program-title {
-                font-size: 22px;
-            }
-            
-            .program-price {
-                font-size: 30px;
+            .programs-container, 
+            .guarantees {
+                grid-template-columns: 1fr;
             }
             
             .video-placeholder {
-                height: 300px;
+                height: 250px;
             }
         }
         
-        @media (max-width: 576px) {
-            .hero h1 {
+        @media (max-width: 480px) {
+            .headline {
                 font-size: 28px;
             }
             
-            .hero p {
-                font-size: 16px;
+            .features-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .section-header h2 {
-                font-size: 26px;
-            }
-            
-            .cta-button {
-                padding: 14px 28px;
-                font-size: 16px;
-            }
-            
-            .timeline-steps {
-                flex-direction: column;
-                gap: 30px;
-            }
-            
-            .timeline-track {
-                display: none;
-            }
-        }
-        
-        /* Decorative dots and shapes */
-        .dot-pattern {
-            position: absolute;
-        }
-        
-        .dot-pattern.top-right {
-            top: 100px;
-            right: 50px;
-            width: 180px;
-            height: 180px;
-            opacity: 0.1;
-        }
-        
-        .dot-pattern.bottom-left {
-            bottom: 100px;
-            left: 50px;
-            width: 150px;
-            height: 150px;
-            opacity: 0.1;
-            transform: rotate(45deg);
-        }
-        
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        /* Additional Styling for Modern GHL look */
-        .modern-section {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            padding: 50px;
-            margin: 50px auto;
-            max-width: 1000px;
-            position: relative;
-        }
-        
-        .modern-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 50px;
-            background: var(--primary-gradient);
-            border-top-left-radius: 20px;
-        }
-        
-        .quick-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .info-card {
-            background: var(--background-light);
-            border-radius: 12px;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-        
-        .info-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 24px;
-        }
-        
-        .info-title {
-            font-weight: 700;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        
-        .info-text {
-            color: var(--text-light);
-            font-size: 14px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, rgba(205, 133, 63, 0.2), rgba(178, 107, 40, 0.3));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .feature-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--accent);
-        }
-        
-        .feature-text h4 {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--text-dark);
-        }
-        
-        .feature-text p {
-            color: var(--text-light);
-            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="file:///mnt/user-data/uploads/rbpt-logo-mnt.png" alt="Renford Bennett Personal Training">
-            </div>
-            <nav class="nav-links">
-                <a href="#programs">Programs</a>
-                <a href="#about">About</a>
-                <a href="#testimonials">Success Stories</a>
-                <a href="#faq">FAQs</a>
-            </nav>
-        </div>
-    </header>
-    
-    <main class="main-content">
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <span class="badge-text">Personal Training for Busy Mums</span>
-                    <h1>It's Time to Put <span class="highlight-text">Yourself</span> Back on the List</h1>
-                    <p>Between kids, work, and everything else, your fitness can slip. I help mums find their strength and energy in ways that actually fit real life.</p>
-                    <a href="#programs" class="cta-button">SEE PROGRAMS</a>
-                </div>
-            </div>
-            <div class="dot-pattern top-right">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <circle cx="10" cy="10" r="2" fill="#7D9D95" />
-                    </pattern>
-                    <rect x="0" y="0" width="100%" height="100%" fill="url(#dots)" />
-                </svg>
-            </div>
-        </section>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3V4M12 20V21M21 12H20M4 12H3M18.364 5.636L17.657 6.343M6.343 17.657L5.636 18.364M18.364 18.364L17.657 17.657M6.343 6.343L5.636 5.636M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </button>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAABSCAYAAABPzuxEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAqRSURBVHgB7Z1Pb1TJFcXPbWPIAJEi5sOQSTKRsiASH4BISSYjj8QONnwFezJ2l7U/AptI2SWrMJtEbLKdZJEVK1YpD5sYhYgowYYggZkEZ6T3qt+9XVXdVf3nddttzv9Ienb/qaq6dZ977qlb1cYYIAjCRCJDEISJRQRYECYYEWBBmGBEgAVhghEBFoQJRgRYECYYEWBBmGBEgAVhghEBFoQJRgRYECYYEWBBmGBEgAVhgpkaRRCu/fp78Aa9A8jnwa/hDR68HLH+lVwWS7+6pOsajz8OdRxH+twBd+wFfhH3Ij6+PJLvpfJdD7O8j5i57rlpYMDbZPuvlIZrrrXN2a+1HzlrK/S1rk75dQHmYPjQI+rAP+jBCk2W3rvXg4P2+y14zLWDg56u63Zdyw3EudOL9tnZZ++rXfcKwn/39R08bLv6fDM9pJ/fob0QW2b7XJbMY2PYK/HmIb9Ov5uGd6iHD89dAqZy6Ht0Cr8p8HXJTU/7d/vBr0h9ZhqpazA66pnprHvNF0Ld7W5XYw2vxQb4+/e/cwJHHSv8PPHrEKA9aXuN5N8t/s3jXrQHh9o+n5/i35zeO5jrO5Gh4R3W7HWZjj2d6M3OWRHudHg0NeF0RuKV8QnXWrQbB9qOuZtGjzvXPpimQ6bHnLlxaLeOMMW6Ek9XpdHG3NRs2nU00dEbYGt6n3/9J6r/aWClgbtW3L9wETcNDvG5FdzvWHEOBgef+FHLRx2TbVzZsaJHnWLXkv3MnD0mAnWoYgvNcTf4Lv7t7ejzwZx+jdtvaxFPYO7bxE17j76HbduXs1aYMzM45F47w2J1aC/k6XmOh6ztxeHK9LR+L9T8gQbMtTbvN7LnSefB65sHfdl55eHM4+yMbaNnYV+abtDoPNJzbdPojV1f0+jzqUa9kRvhD84u4OPZaxdG1u/+exf/efw3WKyhYUWqY08Ue6Jwp9M5tPXTIriuaQ8mNXuCaNlx3bQnnP2cTpSDjh0hW3ag1iFr7aER3yvN2RHaiuU8N2sznX0dZi5b8T3TLNpGrGMF68CeXJpWXBt21G7aT/FMX08G0/azIYNrGFzDAzzRozUJ6e5MJ8OCtRctqxfZEDbtcyTy0/YXCrNsOxGwPp35JZHKxvftWLMvs2iF9mNdX2Rd91lHTt/z+6yjtB9W4LO+Vs3eMAL8/L9PjzbDVhzrVmR6fPcPu5oDFtJw4EOIZL8VdHI0rS5UD/kB7zPnRsyWTTx1nKh16cSDCa8xjbaBsO8x53c0U1zJZtrLSTPCHQnuWBsJiC9DNMP7iHKtDffYaXu5iDvUXxJqOvWJZT7+UfFWGHWNmvnm3nDeJI1wg9N3kRjl7GvTPncvOr7OKNjnzAg4zHxbDfcT0c3VqctNqDfVEbpxdKWwpd5M/GffP8NfrZBFI+cYDLO5wvqWE7fFDFtmzLULQkEj7Hhpmbqk76vjGt2RgU2CQl9SPzkJq7UGeTdVaS69LvM5nT1O0LQ2i6eFH4EhgpUFnp2bECu3e3yt+xm3yW0PBaZjHd9XnouM8KVGR3wvS8t19eVV1NPr0t7nbMq3cN6cIl3YdBfOtD5QE3q4Tqe4v5cq7j3dJDquVIB/nXZCmEGh7DnbSpxcF+fCxcjSgX0o+hO3Qs3d6e4+Ld81e4JUFVN8R7S27xWY0CHrcCm5PYuuGrLq0d5tOBxu/p/m4qZtaKgbG24tOt9e5iRx8R3d0tQjc9kDXfG5qHlcXA+9k1KJizTAqf0z7mSdoXW0YMnK0XH9HptX7JXyvJvixJSeFo1jS6HJiuoF/OzM5dR9J8g/RpCZNO3CZF28Ao+lDtPk4kXoSF2gNDEsVF4gXEpTHd3vxmwzK0tJC5fZmOGEHBXvxp78xNXuGG87OHq+M9qGD5Nvk2WOjm2gqUUJPzVPSZVX+C28TyuP9Wd+wq0c4HsSK8aekePqDlsupfG+UW9UGPcGW9LnOXWpJ13OJYxSn6YA1zM1qz+5iFH0YQ4fGtKZ6TGAoTTWSSrtJBE6iReTN9PsEm1TJ16qbHlcJTMcOUwdXUwDN84M+LHdUcJKDGZPTIcxwwufZOmYtdezQtJ3vaDOi3IfaKl5PmtVxDh6lQvl1EF7PfQ8bIfyQR09fW6CvVMm0JjRVRh9KYEXMi0YuZeLUCgxeXXPJDUm2c4eRpDmjnkGXq4b5Rje/aTNZFo5T2pM6rkuT3hY2m2j5UpNcvYuC56jb77vRRYtfRmJzHrMtXFYpqXXXIPOxaOZvXYwfU59Oy+8XfHD1iZaH65Hxx1YnRJi8vZjzXIZ79qXQmJdUWQZ4Uau8lmhLtR+M+vZZa2Pu56jrfLgS5L9PFWQl9HV4qUNb0nV96JFr44TMfoM/UVnXCF3YmInAYUKpyMHKDJZq8wLlz/+DGJZ0u0X1+5njOv08nOVhYrqxD1qcqKnKHAh0ILp5/i1fqHyoVihgQJGbzDFPnMYuBmcJZ7+mF7Mb3O/cbS5vGf62ZSwAUFf1uFhbxr5Z+u+gHZnkVfG9UdlAszLTIq3I0+tMYK1+ZZazgXLXPCw6xKTzZLZgr5ytptPbX6xq6Y/o0mNZYQb+CnpRV7lw+u6n7RZjl4l9bP8fVaX9ZhvLBgwlBcK97L5w9q8DF5dLG5pDxWvHqbRhXSMfC6vjiXzgmZiTrOeTXS54vaSdcPc/1CkUcnbQXjI4YWlGX5DlN2XoZA7PwY8kfcyzGfVVn4qv2WZXN95etw4J6FvJPrqnrKFB+i7xo8LB6LfXX3Oex7tqTmtdL+8v1m2wR8G79KOLkgI45JalPRhJPsccvH1nOsKlSFEfQZlrKFmf/hA/VWn0lQ8YvLe7yJG1cRMXdRYRITLmkwh5mDmw4aS2aYsmj1OTtZDt87VeSt50H5mqZovPGRMT9YqWOmFBOUuKaOmUJEWZLLrpL7lF85OlqTLiT9iEG4KcGV/F42TIX1jpOwfvLDYXPmw9a3OClS/+bKCUvTCdkF8bpY8H1bXlhiF9Fp6Pt9X9VpAVUKMkd3fXNNDRKdkB6pf/aRZRVCq5y7LWOJ41nVbcUQm7jXLxJ30vKyvaTwrrSNX4aEYwfOVZZLPzCZsJ2zEv/Hq7ynPQjdqx34TzZ48Xt9mN1iM+1Q4O+yg5UZOzZ46HiEPDnmBb3g2bFp+y74Ouk52OVnpKhvdSXmw34XzLRyejP7TmI49mex7cKrQz7HgCfXt6aCnCGcHMlypedxL5QgbvuHUg9cdFSl57fqKcI1G0c9Jv+mV60p9UVVF/uB/pnYeRy/KUWVYtq+xJ/fvP/y3F3WiLSffb9v/cHg3+nzw1fzM/tl58Gvwz/yIfoXQwWTDdmxAr//A0jZfb2fXJvw+0WFwTfb6cO7zGbzRcUj6tQ5LO9Nd6zxqTOdFRdoR/Eqxrg/UwWuOGdKPjv2vQx8t+8mO3XRt4j+WVxoWXb4z3JbnEJa/dT5b//n7OA/pPwGEbwgRYEGYYESABWGCEQEWhAlGBFgQJhgRYEGYYESABWGCEQEWhAlGBFgQJhgRYEGYYESABWGCEQEWhAnmf+Pu3xhXRzlhAAAAAElFTkSuQmCC" alt="Renford Bennett Personal Training" class="logo"
         
-        <section class="section">
-            <div class="container">
-                <div class="video-container">
-                    <div class="video-placeholder">
-                        <p>Meet Renford Video - Coming Soon</p>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 40px;">
-                    <span class="badge-text" style="background: var(--accent-gradient);">My Coaching Philosophy</span>
-                    <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 20px; color: var(--text-dark);">Why I Coach</h3>
-                    <div style="max-width: 800px; margin: 0 auto; text-align: left; color: var(--text-light); line-height: 1.8; font-size: 16px;">
-                        <p style="margin-bottom: 20px;">As a dad of four, I know first-hand how easy it is to put your own health at the bottom of the list. Between school runs, work, and the constant juggle of family life, most mums are already stretched thin. That's why I coach — to help busy people build strength, energy and confidence in a way that fits their real lives.</p>
-                        
-                        <p style="margin-bottom: 20px;">Some people love 6am sessions, and others might have hours to spend in the gym each day — and that's great if it works for them. But for most busy mums, that's just not realistic. My role is to make fitness fit around you, so you can feel good in your own skin and have the energy for the things that matter most.</p>
-                        
-                        <p style="margin-bottom: 20px;">I don't believe in crash diets or all-or-nothing routines. I believe in structure you can stick to, support that keeps you accountable, and results that last without extremes. Real coaching for real people — so you can finally put yourself back on the list.</p>
-                    </div>
-                    <a href="#about" style="display: inline-block; margin-top: 20px; color: var(--accent); font-weight: 600; text-decoration: none; font-size: 16px;">Read My Full Story →</a>
-                </div>
-            </div>
-        </section>
-        
-        <div class="timeline-wrapper">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Your Journey to Results</h2>
-                    <p>A simple, effective process that works with your busy schedule</p>
-                </div>
-                
-                <div class="journey-timeline">
-                    <div class="timeline-track"></div>
-                    <div class="timeline-steps">
-                        <div class="timeline-step">
-                            <div class="step-circle" style="background: var(--secondary-gradient);">1</div>
-                            <div class="step-title">Join</div>
-                            <div class="step-description">Select your program</div>
-                        </div>
-                        <div class="timeline-step">
-                            <div class="step-circle" style="background: var(--secondary-gradient);">2</div>
-                            <div class="step-title">Onboard</div>
-                            <div class="step-description">Get your plan & app</div>
-                        </div>
-                        <div class="timeline-step">
-                            <div class="step-circle" style="background: var(--secondary-gradient);">3</div>
-                            <div class="step-title">Train</div>
-                            <div class="step-description">Follow your program</div>
-                        </div>
-                        <div class="timeline-step">
-                            <div class="step-circle" style="background: var(--secondary-gradient);">4</div>
-                            <div class="step-title">Transform</div>
-                            <div class="step-description">See real results</div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1 class="headline">It's time to put <span class="highlight">yourself</span> back on the list.</h1>
+            <p class="subheadline">Rebuild strength, confidence and energy in the New Year — with a 6- or 12-Week Reset designed for busy mums who juggle school runs, work and family life.</p>
+            <a href="#programs" class="cta-button primary">Start Your Reset Today</a>
+            <div style="margin-top: 15px;">
+                <button class="cta-button secondary">Prefer to watch first? Play the 45-sec video</button>
             </div>
         </div>
         
-        <section class="section" id="programs">
-            <div class="container programs-container">
-                <div class="section-header">
-                    <h2>Choose Your Path to Results</h2>
-                    <p>Select the program that fits your goals, lifestyle, and budget</p>
+        <!-- Video Section -->
+        <div class="video-container">
+            <div class="video-placeholder">
+                <div class="play-button">
+                    <div class="play-icon"></div>
                 </div>
-                
-                <div class="programs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; margin-bottom: 40px;">
-                    <div class="program-card">
-                        <div class="program-title">12-Week Reset</div>
-                        <div class="program-description">Full transformation program for women who want total support and accountability</div>
-                        <div class="program-price">£197</div>
-                        <ul class="program-features">
-                            <li>Personalized 12-week training plan</li>
-                            <li>Custom nutrition guidance</li>
-                            <li>Weekly check-ins & adjustments</li>
-                            <li>App access with workout videos</li>
-                            <li>Private community access</li>
-                            <li>Money-back guarantee</li>
-                        </ul>
-                        <a href="https://buy.stripe.com/00w14mbxc0iba4Ne7Fgw002" class="cta-button" style="background: var(--accent-gradient);">JOIN NOW</a>
-                    </div>
-                    
-                    <div class="program-card">
+                <p>Video: "Why This Reset Works for Busy Mums"</p>
+            </div>
+        </div>
+        
+        <!-- What This Is Section -->
+        <div class="section">
+            <h2 class="section-title">What This Is</h2>
+            <p class="section-desc">A focused 6- or 12-week coaching program for busy mums who want structure and support without the stress.</p>
+            
+            <div class="programs-container">
+                <!-- 6-Week Program -->
+                <div class="program-card">
+                    <div class="program-header">
                         <div class="program-title">6-Week Mini Reset</div>
-                        <div class="program-description">Perfect starter program to kickstart your fitness journey with quick results</div>
+                        <div class="program-subtitle">Fast, structured kick-start to rebuild momentum</div>
+                    </div>
+                    <div class="program-content">
                         <div class="program-price">£167</div>
                         <ul class="program-features">
-                            <li>Focused 6-week training plan</li>
-                            <li>Basic nutrition guidelines</li>
-                            <li>Weekly check-ins</li>
-                            <li>App access with workout videos</li>
-                            <li>Private community access</li>
-                            <li>Money-back guarantee</li>
+                            <li>Tailored Weekly Plans</li>
+                            <li>Weekly Check-Ins</li>
+                            <li>Simple Nutrition Guidance</li>
+                            <li>WhatsApp Support</li>
+                            <li>Money-Back Guarantee</li>
                         </ul>
-                        <a href="https://buy.stripe.com/cNi00igRw7KD7WFbZxgw003" class="cta-button" style="background: var(--accent-gradient);">JOIN NOW</a>
+                        <a href="#" class="cta-button primary" style="width: 100%;">Choose This Program</a>
                     </div>
                 </div>
                 
-                <div class="programs-grid" style="display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px;">
-                    <div class="program-card">
-                        <div class="program-title">Online Coaching</div>
-                        <div class="program-description">Ongoing support and coaching for consistent progress month after month</div>
-                        <div class="program-price">£200<span class="price-note">/month</span></div>
-                        <ul class="program-features">
-                            <li>Monthly program updates</li>
-                            <li>Personalized nutrition coaching</li>
-                            <li>Unlimited support via messaging</li>
-                            <li>App access with workout videos</li>
-                            <li>Private community access</li>
-                            <li>Requires consultation first</li>
-                        </ul>
-                        <a href="https://buy.stripe.com/fZufZg44K6Gzfp74x5gw006" class="cta-button">BOOK CONSULTATION</a>
+                <!-- 12-Week Program -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-title">12-Week Reset</div>
+                        <div class="program-subtitle">The full experience to cement habits and see real change</div>
                     </div>
-                </div>
-                
-                <div class="programs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                    <div class="program-card">
-                        <div class="program-title">Hybrid Coaching (1 Session)</div>
-                        <div class="program-description">Perfect blend of in-person and online coaching for maximum results</div>
-                        <div class="program-price">£220<span class="price-note">/month</span></div>
+                    <div class="program-content">
+                        <div class="program-price">£197</div>
                         <ul class="program-features">
-                            <li>1 in-person session per week</li>
-                            <li>Full online program access</li>
-                            <li>Custom nutrition plan</li>
-                            <li>Priority messaging support</li>
-                            <li>Private community access</li>
-                            <li>Requires consultation first</li>
+                            <li>Tailored Weekly Plans</li>
+                            <li>Weekly Check-Ins</li>
+                            <li>Simple Nutrition Guidance</li>
+                            <li>WhatsApp Support</li>
+                            <li>Money-Back Guarantee</li>
                         </ul>
-                        <a href="https://buy.stripe.com/bJe6oG8l08OH90J7Jhgw004" class="cta-button" style="background: var(--secondary-gradient);">BOOK CONSULTATION</a>
-                    </div>
-                    
-                    <div class="program-card">
-                        <div class="program-title">Hybrid Coaching (2 Sessions)</div>
-                        <div class="program-description">Maximum accountability and support with twice weekly in-person training</div>
-                        <div class="program-price">£400<span class="price-note">/month</span></div>
-                        <ul class="program-features">
-                            <li>2 in-person sessions per week</li>
-                            <li>Full online program access</li>
-                            <li>Advanced nutrition coaching</li>
-                            <li>Priority messaging support</li>
-                            <li>Private community access</li>
-                            <li>Requires consultation first</li>
-                        </ul>
-                        <a href="https://buy.stripe.com/aFaeVccBggh95Ox1kTgw005" class="cta-button" style="background: var(--secondary-gradient);">BOOK CONSULTATION</a>
+                        <a href="#" class="cta-button primary" style="width: 100%;">Choose This Program</a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
         
-        <!-- Modern GoHighLevel Style Section -->
-        <div class="modern-section">
-            <span class="badge-text" style="background: var(--secondary-gradient);">Why Choose My Programs</span>
-            <h2 style="font-size: 32px; margin-bottom: 20px; font-weight: 800;">Get The Support You <span style="color: var(--secondary-dark);">Actually Need</span></h2>
-            <p style="color: var(--text-light); margin-bottom: 30px;">My programs are designed specifically for busy women who want more energy, confidence and strength without the gym intimidation or impossible routines.</p>
+        <!-- Why Busy Mums Love It -->
+        <div class="section">
+            <h2 class="section-title">Why Busy Mums Love It</h2>
+            <p class="section-desc">Because your time isn't the problem — the plan is. This Reset fits around your real life so you can train consistently and feel like you again.</p>
             
-            <div class="quick-info">
-                <div class="info-card">
-                    <div class="info-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM16.3 15.2L11 12.3V7H12.5V11.4L17 13.9L16.3 15.2Z" fill="white"/>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM16.3 15.2L11 12.3V7H12.5V11.4L17 13.9L16.3 15.2Z"/>
                         </svg>
                     </div>
-                    <div class="info-title">Time-Efficient</div>
-                    <div class="info-text">3-4 workouts per week, 30-45 minutes each. Less than 3 hours total.</div>
+                    <h3 class="feature-title">Time-Efficient</h3>
+                    <p class="feature-desc">3-4 workouts per week, 30-45 minutes each. Less than 3 hours total.</p>
                 </div>
-                <div class="info-card">
-                    <div class="info-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 9.3V4H16V7.6L12 4L2 12.5H5V20H19V12.5H22L19 9.3ZM17 18H15V13H9V18H7V10.5L12 6.2L17 10.5V18Z" fill="white"/>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 9.3V4H16V7.6L12 4L2 12.5H5V20H19V12.5H22L19 9.3ZM17 18H15V13H9V18H7V10.5L12 6.2L17 10.5V18Z"/>
                         </svg>
                     </div>
-                    <div class="info-title">Home or Gym</div>
-                    <div class="info-text">Train wherever works for you with minimal equipment needed.</div>
+                    <h3 class="feature-title">Home or Gym</h3>
+                    <p class="feature-desc">Train wherever works for you with minimal equipment needed.</p>
                 </div>
-                <div class="info-card">
-                    <div class="info-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 4C14.9 4 13.9 4.4 13.2 5.2C12.4 4.5 11.4 4 10.3 4C8 4 6 6 6 8.5C6 11.4 8.4 14.2 12 17.4C15.6 14.2 18 11.4 18 8.5C18 6 16 4 16 4ZM12 15.7C8.8 12.9 7 10.5 7 8.5C7 6.5 8.5 5 10.3 5C11.4 5 12.5 5.7 13 6.6H11V7.6H14C14.5 8.5 15.6 9.2 16.7 9.2V10.2C15.3 10.2 14.1 9.3 13.5 8H12.6C12.2 9.3 11 10.2 9.6 10.2V9.2C10.7 9.2 11.7 8.5 12.2 7.6H15C14.9 6.2 13.7 5 12.2 5C13.8 5 15 6.2 15 7.9C15 9.7 13.6 11.7 12 13.4C10.8 12 9.7 10.6 9.2 9.2C8.5 9.2 7.9 8.8 7.6 8.2C7.6 10.6 10 13.2 12 15.7Z" fill="white"/>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2 22 6.5 22 12 17.5 22 12 22M12 12C10.9 12 10 12.9 10 14S10.9 16 12 16 14 15.1 14 14 13.1 12 12 12M18 14C18 10.7 15.3 8 12 8S6 10.7 6 14H4C4 9.6 7.6 6 12 6S20 9.6 20 14H18Z"/>
                         </svg>
                     </div>
-                    <div class="info-title">Family-Friendly</div>
-                    <div class="info-text">Nutrition guidance that works around family meals, no cooking separate dinners.</div>
+                    <h3 class="feature-title">Simple Approach</h3>
+                    <p class="feature-desc">No complicated diets or extreme routines. Just clear, effective guidance.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 4C14.9 4 13.9 4.4 13.2 5.2C12.4 4.5 11.4 4 10.3 4C8 4 6 6 6 8.5C6 11.4 8.4 14.2 12 17.4C15.6 14.2 18 11.4 18 8.5C18 6 16 4 16 4Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Family-Friendly</h3>
+                    <p class="feature-desc">Nutrition that works around family meals - no separate cooking required.</p>
                 </div>
             </div>
         </div>
         
-        <section class="section" id="testimonials">
-            <div class="container testimonials-container">
-                <div class="section-header">
-                    <h2>Success Stories</h2>
-                    <p>Real women, real results. Here's what happens when you commit to the process.</p>
+        <!-- Testimonials -->
+        <div class="section" id="testimonials">
+            <h2 class="section-title">Real Wins from Real Mums</h2>
+            <p class="section-desc">Here's what other busy mums are saying about the Reset program</p>
+            
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I've had a really stressful couple of weeks at work & now trying to catch up! I managed to stick to the exercise, but am struggling this week now workouts are longer. Thanks Renford for giving me structure to keep going with exercise these last few weeks - I would have done very little without this plan!</p>
+                    <p class="testimonial-author">Elizabeth <span>busy mum of two</span></p>
                 </div>
                 
-                <div class="testimonials">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"After having two kids, I didn't think I could ever get back in shape. Renford's program fit perfectly into my busy life, and I've lost 12kg in 12 weeks! The best part is I can still enjoy meals with my family."</p>
-                        <p class="testimonial-author">Sarah M.</p>
-                        <p class="testimonial-details">Lost 12kg • 12-Week Reset Program</p>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The workouts are challenging but doable, even with my crazy schedule. I'm stronger now than I've ever been, even before having kids. My energy levels have skyrocketed, which my family appreciates!"</p>
-                        <p class="testimonial-author">Emma T.</p>
-                        <p class="testimonial-details">Lost 8kg • Online Coaching Member</p>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"I tried so many quick fixes before finding Renford. His approach is refreshingly realistic and sustainable. I'm never hungry, the workouts fit into my day, and the results keep coming month after month."</p>
-                        <p class="testimonial-author">Laura K.</p>
-                        <p class="testimonial-details">Lost 15kg • Hybrid Coaching</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="about">
-            <div class="container">
-                <div class="coach-section">
-                    <div class="coach-image">
-                        <div class="coach-placeholder">
-                            <p>Renford's Photo - Coming Soon</p>
-                        </div>
-                    </div>
-                    <div class="coach-content">
-                        <span class="badge-text">About Me</span>
-                        <h2>Renford Bennett</h2>
-                        <p>I know what it feels like when life gets busy and your own needs slip to the bottom of the list. As a dad of four, I see the reality of family life every single day—the school runs, the chaos, the constant juggle of work, kids, and everything in between. And when you're always giving to everyone else, it's easy to forget about looking after yourself.</p>
-                        
-                        <p>That's why I coach. Because I know how hard it is to prioritise your health when you've got so much on your plate. I started coaching to give people—especially mums—a way to get fitter, stronger and more confident without adding more stress to an already packed schedule.</p>
-                        
-                        <p>Now, some people thrive off 6am sessions, and if that works for you, that's brilliant. Others might have two or three hours a day to train, and that's great too. But the truth is, most mums don't live in that reality. Between family life, work, and everything else, time is tight—and that's exactly why your fitness needs to fit your world, not the other way around.</p>
-                        
-                        <p>My approach is built on that belief. I don't do crash diets, "all or nothing" routines, or plans that only work for a few weeks. Instead, I focus on helping you find structure, balance and energy in a way that actually sticks. Because the best routine is the one you can keep showing up for—the one that makes you feel stronger, more confident and energised without guilt or extremes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="faq">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Frequently Asked Questions</h2>
-                    <p>Everything you need to know about training with me</p>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I feel like I actually have a plan to keep me on track and accountable now, rather than my usual random workout that just wasn't effective and in all honesty happened very rarely!</p>
+                    <p class="testimonial-author">Natalie <span>school run mum</span></p>
                 </div>
                 
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Personalized Programs</h4>
-                            <p>Every plan is custom-built around your goals, schedule, and fitness level</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Regular Check-ins</h4>
-                            <p>Consistent support and accountability to keep you on track</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h4>App Access</h4>
-                            <p>Track workouts, progress, and message support all in one place</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Nutrition Support</h4>
-                            <p>Simple, effective guidance without extreme diets</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Home Workout Options</h4>
-                            <p>Train effectively with minimal equipment</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Money-Back Guarantee</h4>
-                            <p>Exclusive to Reset programs - results or your money back</p>
-                        </div>
-                    </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I joined this program to build a consistent routine and feel stronger. I'm not as sore as last week which is a win, but the workouts are still definitely challenging. I got some weights and started the weight track, and I've added an 8-minute stretch in the mornings.</p>
+                    <p class="testimonial-author">Michelle <span>working mum</span></p>
                 </div>
-                
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <div class="faq-question">Who is the Reset program for?</div>
-                        <div class="faq-answer">
-                            <p>My Reset programs are perfect for busy mums who want to reclaim their energy and confidence. Whether you've never exercised before or you're getting back into fitness after having children, the program adapts to your current level. It's especially good for women who struggle to find time for themselves and need a structured plan that fits into a hectic family life.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">How much time do I need to commit each week?</div>
-                        <div class="faq-answer">
-                            <p>The Reset programs require just 3-4 workouts per week, each lasting 30-45 minutes. That's less than 3 hours total per week. Many clients break these into smaller sessions when needed - even 15-minute workouts add up! The nutrition component is designed around family-friendly meals, so you won't be cooking separate dinners.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">Do I need special equipment or a gym membership?</div>
-                        <div class="faq-answer">
-                            <p>Not at all! The Reset programs are designed to be done at home with minimal equipment. You'll need a set of dumbbells (or household items as substitutes) and a resistance band, which I can help you source affordably. As you progress, you might choose to add more equipment, but it's never required.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">I've tried programs before and failed. How is this different?</div>
-                        <div class="faq-answer">
-                            <p>Most programs fail because they're not designed for real life - especially the demanding life of a busy mum. My approach focuses on sustainability and flexibility. We have contingency plans for sick kids, work emergencies, and those days when you just can't face a workout. Plus, you get direct access to me for accountability and troubleshooting. The entire program is built around the reality of a busy mum's schedule.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">What's your 'Win Your Money Back' Guarantee?</div>
-                        <div class="faq-answer">
-                            <p>Super simple. You pay upfront for the 6-Week or 12-Week Reset, we set a clear goal together, and I guide you step-by-step to hit it. If you reach that goal by the end of your challenge and complete your weekly check-ins, you win your money back as credit to use toward any of our programs. Either way, you win — results or your money back to keep going.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">What happens after the Reset program?</div>
-                        <div class="faq-answer">
-                            <p>When you finish, you can keep progressing with ongoing online coaching or upgrade to the hybrid program with one-to-one sessions plus full online support. We'll chat before the program ends to find the best fit for your next step.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <div class="final-cta">
-            <div class="container">
-                <h2>Ready to transform how you look and feel?</h2>
-                <p>Join today and start with the structure and support you need.</p>
-                <a href="#programs" class="cta-button">JOIN TODAY</a>
-            </div>
-            <div class="dot-pattern bottom-left">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <pattern id="dots-bl" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <circle cx="10" cy="10" r="2" fill="#7D9D95" />
-                    </pattern>
-                    <rect x="0" y="0" width="100%" height="100%" fill="url(#dots-bl)" />
-                </svg>
             </div>
         </div>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <div class="footer-logo">
-                        <img src="file:///mnt/user-data/uploads/rbpt-logo-mnt.png" alt="Renford Bennett Personal Training">
-                    </div>
-                    <p>Fitness that fits your life. I help busy people, especially mums, build strength, energy, and confidence with realistic, sustainable programs that actually work.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon">FB</a>
-                        <a href="#" class="social-icon">IG</a>
-                        <a href="#" class="social-icon">YT</a>
-                    </div>
+        
+        <!-- Guarantees -->
+        <div class="section">
+            <h2 class="section-title">Two Guarantees — So You Can't Lose</h2>
+            <p class="section-desc">Either way, you win — your results or your money.</p>
+            
+            <div class="guarantees">
+                <div class="guarantee-card">
+                    <div class="guarantee-badge">Guarantee #1</div>
+                    <h3 class="guarantee-title">Full Money-Back Guarantee</h3>
+                    <p class="guarantee-desc">Complete your weekly check-ins and milestones. If you don't feel stronger, more confident and back in control by the end — you get a full refund.</p>
                 </div>
                 
-                <div class="footer-nav">
-                    <h3 class="footer-heading">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#programs">Programs</a></li>
-                        <li><a href="#about">About Me</a></li>
-                        <li><a href="#testimonials">Success Stories</a></li>
-                        <li><a href="#faq">FAQs</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h3 class="footer-heading">Contact</h3>
-                    <ul class="footer-links">
-                        <li><a href="mailto:info@renfordbennettpt.co.uk">info@renfordbennettpt.co.uk</a></li>
-                        <li><a href="tel:+441234567890">+44 1234 567890</a></li>
-                        <li><a href="https://www.instagram.com/renfordbennettpt">Instagram: @renfordbennettpt</a></li>
-                    </ul>
+                <div class="guarantee-card">
+                    <div class="guarantee-badge">Guarantee #2</div>
+                    <h3 class="guarantee-title">Win-Your-Money-Back Credit</h3>
+                    <p class="guarantee-desc">If you complete everything and love how you feel, you'll win your investment back as credit towards ongoing coaching — so your progress continues.</p>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2025 Renford Bennett Personal Training. All rights reserved.</p>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#programs" class="cta-button primary">Start Your Reset Today</a>
             </div>
         </div>
-    </footer>
+        
+        <!-- Process Section -->
+        <div class="section">
+            <h2 class="section-title">What Happens When You Join</h2>
+            <p class="section-desc">Getting started is quick and simple</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <h3 class="process-title">Pick your program and checkout</h3>
+                    <p class="process-desc">Choose between the 6-Week Mini Reset or 12-Week Reset and complete your payment (takes about 60 seconds).</p>
+                </div>
+                
+                <div class="process-step">
+                    <h3 class="process-title">Receive your welcome email</h3>
+                    <p class="process-desc">You'll get a welcome email with a simple setup link to get everything in place.</p>
+                </div>
+                
+                <div class="process-step">
+                    <h3 class="process-title">Set your start date</h3>
+                    <p class="process-desc">Choose any Monday in January to start your program (or sooner if you prefer).</p>
+                </div>
+                
+                <div class="process-step">
+                    <h3 class="process-title">Get your plan and start</h3>
+                    <p class="process-desc">You'll receive your personalized plan and check-ins, and you're off!</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#programs" class="cta-button primary">I'm Ready — Start My Reset</a>
+            </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Who is the Reset program for?</div>
+                    <div class="faq-answer">
+                        <p>The Reset programs are perfect for busy mums who want to reclaim their energy and confidence. Whether you've never exercised before or you're getting back into fitness after having children, the program adapts to your current level. It's especially good for women who struggle to find time for themselves and need a structured plan that fits into a hectic family life.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How much time do I need to commit each week?</div>
+                    <div class="faq-answer">
+                        <p>The Reset programs require just 3-4 workouts per week, each lasting 30-45 minutes. That's less than 3 hours total per week. Many clients break these into smaller sessions when needed - even 15-minute workouts add up! The nutrition component is designed around family-friendly meals, so you won't be cooking separate dinners.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do I need special equipment or a gym membership?</div>
+                    <div class="faq-answer">
+                        <p>Not at all! The Reset programs are designed to be done at home with minimal equipment. You'll need a set of dumbbells (or household items as substitutes) and a resistance band, which I can help you source affordably. As you progress, you might choose to add more equipment, but it's never required.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">I've tried programs before and failed. How is this different?</div>
+                    <div class="faq-answer">
+                        <p>Most programs fail because they're not designed for real life - especially the demanding life of a busy mum. My approach focuses on sustainability and flexibility. We have contingency plans for sick kids, work emergencies, and those days when you just can't face a workout. Plus, you get direct access to me for accountability and troubleshooting. The entire program is built around the reality of a busy mum's schedule.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What's your 'Win Your Money Back' Guarantee?</div>
+                    <div class="faq-answer">
+                        <p>It's super simple. You pay upfront for the 6-Week or 12-Week Reset, we set a clear goal together, and I guide you step-by-step to hit it. If you reach that goal by the end of your challenge and complete your weekly check-ins, you win your money back as credit to use toward any of our programs. Either way, you win — results or your money back to keep going.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Final CTA -->
+        <div style="text-align: center; margin: 60px 0;">
+            <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 15px;">Ready to transform how you look and feel?</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px; font-size: 18px;">Join today and start with the structure and support you need.</p>
+            <a href="#programs" class="cta-button primary">Start Your Reset Today</a>
+        </div>
+        
+        <!-- WhatsApp CTA -->
+        <div style="text-align: center; margin: 40px 0 60px;">
+            <p style="color: var(--text-light); margin-bottom: 15px; font-weight: 500;">Still got a question?</p>
+            <p style="color: var(--text-light); margin-bottom: 25px; font-size: 14px;">Tap below to message me directly on WhatsApp — no forms, no calls, just a quick chat.</p>
+            <a href="#" class="cta-button" style="background: #25D366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
+                💬 Message Renford on WhatsApp
+            </a>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2025 Renford Bennett Personal Training. All rights reserved.</p>
+        </div>
+    </div>
     
     <script>
-        // FAQ toggle functionality
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            // Update toggle icon (moon/sun)
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeToggle.innerHTML = isDarkMode ? 
+                '<svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3V4M12 20V21M21 12H20M4 12H3M18.364 5.636L17.657 6.343M6.343 17.657L5.636 18.364M18.364 18.364L17.657 17.657M6.343 6.343L5.636 5.636M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>' :
+                '<svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C10.8065 3 9.66193 3.29325 8.66654 3.86101C7.67116 4.42876 6.85394 5.25054 6.3,6.25C5.74607 7.24946 5.47554 8.38128 5.51863 9.52338C5.56171 10.6655 5.91648 11.7731 6.54006 12.7295C7.16365 13.686 8.0327 14.459 9.05661 14.9692C10.0805 15.4794 11.2221 15.7108 12.3658 15.6404C13.5096 15.5699 14.613 15.2007 15.5602 14.5755C16.5074 13.9503 17.2662 13.0928 17.76 12.08C17.76 12.08 17.76 12.04 17.79 12C17.7626 11.7958 17.8453 11.5947 18 11.48C19.1932 10.8505 20.1127 9.8167 20.6036 8.55797C21.0945 7.29924 21.1244 5.90157 20.6879 4.62291C20.2515 3.34426 19.3743 2.2597 18.2 1.56C17.0258 0.860293 15.6259 0.593533 14.2714 0.808737C12.9169 1.02394 11.6905 1.7061 10.8 2.74C10.7329 2.82812 10.6248 2.87945 10.5126 2.87945C10.4004 2.87945 10.2924 2.82812 10.2252 2.74C9.44333 1.80332 8.36737 1.14543 7.16208 0.874931C5.95679 0.604435 4.70384 0.74094 3.59408 1.25639C2.48432 1.77183 1.58304 2.63459 1.02148 3.71623C0.459911 4.79788 0.272158 6.03082 0.492053 7.22361C0.711948 8.41641 1.32747 9.50195 2.25087 10.3147C3.17427 11.1274 4.35696 11.6213 5.6 11.72C5.69488 11.7325 5.78167 11.7831 5.84214 11.861C5.9026 11.939 5.93128 12.0386 5.92 12.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+        });
+        
+        // FAQ Toggle
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
+                const faqItem = question.parentNode;
                 
                 // Close all other open FAQs
                 document.querySelectorAll('.faq-item.active').forEach(item => {
@@ -2566,12 +1714,12 @@
                     }
                 });
                 
-                // Toggle the clicked FAQ
+                // Toggle active class
                 faqItem.classList.toggle('active');
             });
         });
         
-        // Smooth scroll for anchor links
+        // Smooth Scroll for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2580,11 +1728,8 @@
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
                     window.scrollTo({
-                        top: targetPosition,
+                        top: targetElement.offsetTop - 20,
                         behavior: 'smooth'
                     });
                 }
