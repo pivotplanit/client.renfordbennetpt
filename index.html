@@ -835,6 +835,7 @@
             --background-light: #f9f9f9;
             --background: #ffffff;
             --border-color: #e1e1e1;
+            --overlay-light: rgba(255, 255, 255, 0.7);
             
             /* Dark Mode */
             --dark-bg: #161820;
@@ -842,6 +843,7 @@
             --dark-text: #FFFFFF;
             --dark-text-secondary: #B4B6C1;
             --dark-border: #2D2E3F;
+            --overlay-dark: rgba(30, 31, 41, 0.7);
             
             /* Shadows and UI */
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
@@ -850,6 +852,9 @@
             --shadow-inset: inset 0 2px 8px rgba(0,0,0,0.08);
             --border-radius: 8px;
             --btn-radius: 4px;
+            
+            /* Font Size */
+            --font-size: 16px;
         }
         
         .dark-mode {
@@ -858,6 +863,7 @@
             --background-light: var(--dark-surface);
             --background: var(--dark-bg);
             --border-color: var(--dark-border);
+            --overlay-light: var(--overlay-dark);
         }
         
         * {
@@ -874,6 +880,7 @@
             overflow-x: hidden;
             position: relative;
             transition: all 0.3s ease;
+            font-size: var(--font-size);
         }
         
         .container {
@@ -1150,50 +1157,86 @@
             color: var(--primary);
             font-weight: bold;
         }
+
+        /* What You Get Section */
+        .what-you-get {
+            margin-top: 30px;
+        }
         
-        /* Feature Cards */
+        .what-you-get ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .what-you-get li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .what-you-get li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
         .feature-card {
             text-align: center;
-            padding: 25px 15px;
             border-radius: 12px;
-            background-color: var(--background);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary-light);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(125, 157, 149, 0.2), rgba(125, 157, 149, 0.1));
+            overflow: hidden;
+            position: relative;
+            height: 200px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            margin: 0 auto 15px;
+            align-items: center;
         }
         
-        .feature-icon svg {
-            width: 30px;
-            height: 30px;
-            fill: var(--primary);
+        .feature-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            object-fit: cover;
+        }
+        
+        .feature-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--overlay-light);
+            z-index: 2;
+        }
+        
+        .feature-content {
+            position: relative;
+            z-index: 3;
+            padding: 20px;
+            color: var(--text-dark);
         }
         
         .feature-title {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 20px;
             margin-bottom: 10px;
-            color: var(--text-dark);
         }
         
         .feature-desc {
             font-size: 14px;
-            color: var(--text-light);
         }
         
         /* Testimonials Section */
@@ -1399,7 +1442,8 @@
             }
             
             .programs-container, 
-            .guarantees {
+            .guarantees,
+            .features-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1412,10 +1456,16 @@
             .headline {
                 font-size: 28px;
             }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
+        }
+
+        /* Start Date Note */
+        .start-date-note {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(125, 157, 149, 0.1);
+            color: var(--text-light);
         }
     </style>
 </head>
@@ -1429,7 +1479,7 @@
 
     <div class="container">
         <!-- Logo -->
-        <img src="https://storage.googleapis.com/msgsndr/iHJbp5Jcwz6teWfAgngw/media/68ef6ed052bcc663e6a103e1.png" alt="Renford Bennett Personal Training" class="logo"
+        <img src="https://storage.googleapis.com/msgsndr/iHJbp5Jcwz6teWfAgngw/media/68ef6d0eaa83a9945cea6058.png" alt="Renford Bennett Personal Training" class="logo">
         
         <!-- Hero Section -->
         <div class="hero">
@@ -1451,10 +1501,16 @@
             </div>
         </div>
         
+        <!-- CTA below video -->
+        <div style="text-align: center;">
+            <a href="#programs" class="cta-button primary">I'm In — Start My Reset</a>
+        </div>
+        
         <!-- What This Is Section -->
         <div class="section">
-            <h2 class="section-title">What This Is</h2>
+            <h2 class="section-title">💡 What This Is</h2>
             <p class="section-desc">A focused 6- or 12-week coaching program for busy mums who want structure and support without the stress.</p>
+            <p class="section-desc">No confusion, no overwhelm — just a plan that fits your life and gets you moving again after Christmas.</p>
             
             <div class="programs-container">
                 <!-- 6-Week Program -->
@@ -1495,93 +1551,91 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Start Date Note -->
+            <div class="start-date-note">
+                Start dates: cohorts beginning early January (or start any Monday in January).
+            </div>
         </div>
         
         <!-- Why Busy Mums Love It -->
         <div class="section">
-            <h2 class="section-title">Why Busy Mums Love It</h2>
+            <h2 class="section-title">🧠 Why Busy Mums Love It</h2>
             <p class="section-desc">Because your time isn't the problem — the plan is. This Reset fits around your real life so you can train consistently and feel like you again.</p>
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM16.3 15.2L11 12.3V7H12.5V11.4L17 13.9L16.3 15.2Z"/>
-                        </svg>
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61" alt="Time-Efficient" class="feature-background">
+                    <div class="feature-overlay"></div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Time-Efficient</h3>
+                        <p class="feature-desc">3-4 workouts per week, 30-45 minutes each. Less than 3 hours total.</p>
                     </div>
-                    <h3 class="feature-title">Time-Efficient</h3>
-                    <p class="feature-desc">3-4 workouts per week, 30-45 minutes each. Less than 3 hours total.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 9.3V4H16V7.6L12 4L2 12.5H5V20H19V12.5H22L19 9.3ZM17 18H15V13H9V18H7V10.5L12 6.2L17 10.5V18Z"/>
-                        </svg>
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a" alt="Home or Gym" class="feature-background">
+                    <div class="feature-overlay"></div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Home or Gym</h3>
+                        <p class="feature-desc">Train wherever works for you with minimal equipment needed.</p>
                     </div>
-                    <h3 class="feature-title">Home or Gym</h3>
-                    <p class="feature-desc">Train wherever works for you with minimal equipment needed.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2 22 6.5 22 12 17.5 22 12 22M12 12C10.9 12 10 12.9 10 14S10.9 16 12 16 14 15.1 14 14 13.1 12 12 12M18 14C18 10.7 15.3 8 12 8S6 10.7 6 14H4C4 9.6 7.6 6 12 6S20 9.6 20 14H18Z"/>
-                        </svg>
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883" alt="Simple Approach" class="feature-background">
+                    <div class="feature-overlay"></div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Simple Approach</h3>
+                        <p class="feature-desc">No complicated diets or extreme routines. Just clear, effective guidance.</p>
                     </div>
-                    <h3 class="feature-title">Simple Approach</h3>
-                    <p class="feature-desc">No complicated diets or extreme routines. Just clear, effective guidance.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 4C14.9 4 13.9 4.4 13.2 5.2C12.4 4.5 11.4 4 10.3 4C8 4 6 6 6 8.5C6 11.4 8.4 14.2 12 17.4C15.6 14.2 18 11.4 18 8.5C18 6 16 4 16 4Z"/>
-                        </svg>
+                    <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6" alt="Family-Friendly" class="feature-background">
+                    <div class="feature-overlay"></div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Family-Friendly</h3>
+                        <p class="feature-desc">Nutrition that works around family meals - no separate cooking required.</p>
                     </div>
-                    <h3 class="feature-title">Family-Friendly</h3>
-                    <p class="feature-desc">Nutrition that works around family meals - no separate cooking required.</p>
                 </div>
             </div>
         </div>
-        
-        <!-- Testimonials -->
-        <div class="section" id="testimonials">
-            <h2 class="section-title">Real Wins from Real Mums</h2>
-            <p class="section-desc">Here's what other busy mums are saying about the Reset program</p>
-            
-            <div class="testimonials">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">I've had a really stressful couple of weeks at work & now trying to catch up! I managed to stick to the exercise, but am struggling this week now workouts are longer. Thanks Renford for giving me structure to keep going with exercise these last few weeks - I would have done very little without this plan!</p>
-                    <p class="testimonial-author">Elizabeth <span>busy mum of two</span></p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">I feel like I actually have a plan to keep me on track and accountable now, rather than my usual random workout that just wasn't effective and in all honesty happened very rarely!</p>
-                    <p class="testimonial-author">Natalie <span>school run mum</span></p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">I joined this program to build a consistent routine and feel stronger. I'm not as sore as last week which is a win, but the workouts are still definitely challenging. I got some weights and started the weight track, and I've added an 8-minute stretch in the mornings.</p>
-                    <p class="testimonial-author">Michelle <span>working mum</span></p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Guarantees -->
+
+        <!-- What You Get Section -->
         <div class="section">
-            <h2 class="section-title">Two Guarantees — So You Can't Lose</h2>
-            <p class="section-desc">Either way, you win — your results or your money.</p>
+            <h2 class="section-title">✅ What You Get</h2>
+            <p class="section-desc">For both 6-Week and 12-Week programs:</p>
+            
+            <div class="what-you-get">
+                <ul>
+                    <li>Tailored Weekly Plans (home or gym) — 2–4 short sessions per week</li>
+                    <li>Weekly Check-Ins + Progress Tracking</li>
+                    <li>Simple Nutrition Guidance (no extreme rules)</li>
+                    <li>Habit & Routine Support (sleep, steps, stress)</li>
+                    <li>WhatsApp Support for quick help</li>
+                    <li>Accountability and motivation every step</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="cta-button primary">Choose My Program</a>
+            </div>
+        </div>
+        
+        <!-- Guarantees Section -->
+        <div class="section">
+            <h2 class="section-title">💸 Two Guarantees — So You Can't Lose</h2>
             
             <div class="guarantees">
                 <div class="guarantee-card">
-                    <div class="guarantee-badge">Guarantee #1</div>
+                    <div class="guarantee-badge">1️⃣ Guarantee #1</div>
                     <h3 class="guarantee-title">Full Money-Back Guarantee</h3>
                     <p class="guarantee-desc">Complete your weekly check-ins and milestones. If you don't feel stronger, more confident and back in control by the end — you get a full refund.</p>
                 </div>
                 
                 <div class="guarantee-card">
-                    <div class="guarantee-badge">Guarantee #2</div>
+                    <div class="guarantee-badge">2️⃣ Guarantee #2</div>
                     <h3 class="guarantee-title">Win-Your-Money-Back Credit</h3>
                     <p class="guarantee-desc">If you complete everything and love how you feel, you'll win your investment back as credit towards ongoing coaching — so your progress continues.</p>
                 </div>
@@ -1592,85 +1646,61 @@
             </div>
         </div>
         
-        <!-- Process Section -->
-        <div class="section">
-            <h2 class="section-title">What Happens When You Join</h2>
-            <p class="section-desc">Getting started is quick and simple</p>
+        <!-- Testimonials Section -->
+        <div class="section" id="testimonials">
+            <h2 class="section-title">💬 Real Wins From Real Mums</h2>
             
-            <div class="process-steps">
-                <div class="process-step">
-                    <h3 class="process-title">Pick your program and checkout</h3>
-                    <p class="process-desc">Choose between the 6-Week Mini Reset or 12-Week Reset and complete your payment (takes about 60 seconds).</p>
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Two kids, full-time job — I'm training 3× a week and actually enjoying it. Can't believe how much stronger I feel already!</p>
+                    <p class="testimonial-author">Sarah <span>38</span></p>
                 </div>
                 
-                <div class="process-step">
-                    <h3 class="process-title">Receive your welcome email</h3>
-                    <p class="process-desc">You'll get a welcome email with a simple setup link to get everything in place.</p>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">More energy for the kids and time back for me. The best thing is how flexible it is around my chaotic schedule. No guilt, just progress.</p>
+                    <p class="testimonial-author">Emma <span>42</span></p>
                 </div>
                 
-                <div class="process-step">
-                    <h3 class="process-title">Set your start date</h3>
-                    <p class="process-desc">Choose any Monday in January to start your program (or sooner if you prefer).</p>
-                </div>
-                
-                <div class="process-step">
-                    <h3 class="process-title">Get your plan and start</h3>
-                    <p class="process-desc">You'll receive your personalized plan and check-ins, and you're off!</p>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Love the short clear workouts. No mum guilt, just progress. Renford understands what it's like juggling everything and makes this actually doable.</p>
+                    <p class="testimonial-author">Nina <span>35</span></p>
                 </div>
             </div>
-            
+
             <div style="text-align: center; margin-top: 30px;">
                 <a href="#programs" class="cta-button primary">I'm Ready — Start My Reset</a>
             </div>
         </div>
         
-        <!-- FAQ Section -->
+        <!-- Process Section -->
         <div class="section">
-            <h2 class="section-title">Frequently Asked Questions</h2>
+            <h2 class="section-title">🚀 What Happens When You Join</h2>
             
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">Who is the Reset program for?</div>
-                    <div class="faq-answer">
-                        <p>The Reset programs are perfect for busy mums who want to reclaim their energy and confidence. Whether you've never exercised before or you're getting back into fitness after having children, the program adapts to your current level. It's especially good for women who struggle to find time for themselves and need a structured plan that fits into a hectic family life.</p>
-                    </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <h3 class="process-title">Pick your 6- or 12-week option and checkout (60 seconds)</h3>
+                    <p class="process-desc">Choose between the 6-Week Mini Reset or 12-Week Reset and complete your payment.</p>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">How much time do I need to commit each week?</div>
-                    <div class="faq-answer">
-                        <p>The Reset programs require just 3-4 workouts per week, each lasting 30-45 minutes. That's less than 3 hours total per week. Many clients break these into smaller sessions when needed - even 15-minute workouts add up! The nutrition component is designed around family-friendly meals, so you won't be cooking separate dinners.</p>
-                    </div>
+                <div class="process-step">
+                    <h3 class="process-title">You'll get a welcome email and simple setup link</h3>
+                    <p class="process-desc">Everything you need to get started will be in your inbox.</p>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">Do I need special equipment or a gym membership?</div>
-                    <div class="faq-answer">
-                        <p>Not at all! The Reset programs are designed to be done at home with minimal equipment. You'll need a set of dumbbells (or household items as substitutes) and a resistance band, which I can help you source affordably. As you progress, you might choose to add more equipment, but it's never required.</p>
-                    </div>
+                <div class="process-step">
+                    <h3 class="process-title">We set your start week (any Monday in Jan)</h3>
+                    <p class="process-desc">Choose any Monday in January to start your program (or sooner if you prefer).</p>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">I've tried programs before and failed. How is this different?</div>
-                    <div class="faq-answer">
-                        <p>Most programs fail because they're not designed for real life - especially the demanding life of a busy mum. My approach focuses on sustainability and flexibility. We have contingency plans for sick kids, work emergencies, and those days when you just can't face a workout. Plus, you get direct access to me for accountability and troubleshooting. The entire program is built around the reality of a busy mum's schedule.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What's your 'Win Your Money Back' Guarantee?</div>
-                    <div class="faq-answer">
-                        <p>It's super simple. You pay upfront for the 6-Week or 12-Week Reset, we set a clear goal together, and I guide you step-by-step to hit it. If you reach that goal by the end of your challenge and complete your weekly check-ins, you win your money back as credit to use toward any of our programs. Either way, you win — results or your money back to keep going.</p>
-                    </div>
+                <div class="process-step">
+                    <h3 class="process-title">You get your plan and check-ins — and you're off!</h3>
+                    <p class="process-desc">You'll receive your personalized plan and check-ins, and you're off!</p>
                 </div>
             </div>
-        </div>
-        
-        <!-- Final CTA -->
-        <div style="text-align: center; margin: 60px 0;">
-            <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 15px;">Ready to transform how you look and feel?</h2>
-            <p style="color: var(--text-light); margin-bottom: 30px; font-size: 18px;">Join today and start with the structure and support you need.</p>
-            <a href="#programs" class="cta-button primary">Start Your Reset Today</a>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#programs" class="cta-button primary">Start Your Reset Today</a>
+            </div>
         </div>
         
         <!-- WhatsApp CTA -->
@@ -1701,8 +1731,8 @@
                 '<svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3V4M12 20V21M21 12H20M4 12H3M18.364 5.636L17.657 6.343M6.343 17.657L5.636 18.364M18.364 18.364L17.657 17.657M6.343 6.343L5.636 5.636M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>' :
                 '<svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C10.8065 3 9.66193 3.29325 8.66654 3.86101C7.67116 4.42876 6.85394 5.25054 6.3,6.25C5.74607 7.24946 5.47554 8.38128 5.51863 9.52338C5.56171 10.6655 5.91648 11.7731 6.54006 12.7295C7.16365 13.686 8.0327 14.459 9.05661 14.9692C10.0805 15.4794 11.2221 15.7108 12.3658 15.6404C13.5096 15.5699 14.613 15.2007 15.5602 14.5755C16.5074 13.9503 17.2662 13.0928 17.76 12.08C17.76 12.08 17.76 12.04 17.79 12C17.7626 11.7958 17.8453 11.5947 18 11.48C19.1932 10.8505 20.1127 9.8167 20.6036 8.55797C21.0945 7.29924 21.1244 5.90157 20.6879 4.62291C20.2515 3.34426 19.3743 2.2597 18.2 1.56C17.0258 0.860293 15.6259 0.593533 14.2714 0.808737C12.9169 1.02394 11.6905 1.7061 10.8 2.74C10.7329 2.82812 10.6248 2.87945 10.5126 2.87945C10.4004 2.87945 10.2924 2.82812 10.2252 2.74C9.44333 1.80332 8.36737 1.14543 7.16208 0.874931C5.95679 0.604435 4.70384 0.74094 3.59408 1.25639C2.48432 1.77183 1.58304 2.63459 1.02148 3.71623C0.459911 4.79788 0.272158 6.03082 0.492053 7.22361C0.711948 8.41641 1.32747 9.50195 2.25087 10.3147C3.17427 11.1274 4.35696 11.6213 5.6 11.72C5.69488 11.7325 5.78167 11.7831 5.84214 11.861C5.9026 11.939 5.93128 12.0386 5.92 12.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
         });
-        
-        // FAQ Toggle
+
+        // FAQ Toggle (if needed)
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const faqItem = question.parentNode;
@@ -1734,6 +1764,15 @@
                     });
                 }
             });
+        });
+
+        // Placeholder for video play functionality
+        document.querySelector('.play-button').addEventListener('click', function() {
+            alert('Video will play here. Replace with actual video implementation.');
+        });
+
+        document.querySelector('.cta-button.secondary').addEventListener('click', function() {
+            document.querySelector('.play-button').click();
         });
     </script>
 </body>
